@@ -27,7 +27,8 @@ Imports:
     Matrix,
     stats, 
     methods,
-    ggrastr
+    ggrastr,
+    SeuratObject
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Suggests: 
