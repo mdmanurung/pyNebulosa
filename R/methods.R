@@ -99,7 +99,7 @@ setMethod("plot_density", signature("Seurat"),
               if (all(features %in% colnames(metadata))) {
                   vars <- metadata[, features, drop = FALSE]
               }else{
-                  exp_data <- FetchData(object, vars = features, slot = slot)
+                  exp_data <- FetchData(object, vars = features, layer = slot)
                   vars <- .extract_feature_data(exp_data, features)
               }
               .plot_final_density(vars, cell_embeddings, features, joint,
