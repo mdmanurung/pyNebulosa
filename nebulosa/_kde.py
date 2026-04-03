@@ -180,6 +180,11 @@ def calculate_density(
     if method not in ("wkde", "ks"):
         raise ValueError(f"Unknown method '{method}'. Use 'wkde' or 'ks'.")
 
+    # Clip negative weights to zero (handles z-scored/scaled data where
+    # expression values can be negative — below-average cells should not
+    # contribute to the density)
+    w = np.clip(w, 0, None)
+
     # Handle zero-expression case
     w_sum = w.sum()
     if w_sum == 0:
