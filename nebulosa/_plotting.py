@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from nebulosa._kde import calculate_density
-from nebulosa._utils import _get_embeddings, _get_feature_data, _validate_dims
+from nebulosa._utils import _get_embeddings, _get_feature_data
 
 if TYPE_CHECKING:
     import matplotlib.axes
@@ -172,9 +172,7 @@ def plot_density(
     if not features:
         raise ValueError("At least one feature must be specified")
 
-    _validate_dims(dims)
-
-    # Extract data
+    # Extract data (dims validated inside _get_embeddings)
     embeddings, dim_names = _get_embeddings(adata, reduction, dims)
     feature_data = _get_feature_data(adata, features, layer)
 
@@ -184,24 +182,18 @@ def plot_density(
         w = feature_data[:, i]
         densities[feat] = calculate_density(w, embeddings, method=method, adjust=adjust)
 
-    # Determine panels
-    panels = list(features)
     panel_densities = [densities[f] for f in features]
     panel_labels = list(features)
     colorbar_labels = ["Density"] * len(features)
 
     if joint and len(features) > 1:
-        # Joint density = product of individual densities
-        joint_dens = np.ones(len(embeddings))
-        for d in panel_densities:
-            joint_dens *= d
+        joint_dens = np.prod(panel_densities, axis=0)
         joint_label = " ".join(f"{f}+" for f in features)
-        panels.append(joint_label)
         panel_densities.append(joint_dens)
         panel_labels.append(joint_label)
         colorbar_labels.append("Joint density")
 
-    n_panels = len(panels)
+    n_panels = len(panel_labels)
 
     # Single feature with provided axes
     if n_panels == 1 and ax is not None:

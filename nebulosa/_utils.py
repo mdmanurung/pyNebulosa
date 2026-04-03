@@ -152,16 +152,15 @@ def _get_feature_data(
         mat = adata.layers[layer]
 
     # Extract columns for each feature
+    var_index = {name: i for i, name in enumerate(adata.var_names)}
     result = np.empty((adata.n_obs, len(features)))
     for i, feat in enumerate(features):
-        if feat in adata.var_names:
-            idx = list(adata.var_names).index(feat)
-            col = mat[:, idx]
+        if feat in var_index:
+            col = mat[:, var_index[feat]]
             if sp.issparse(col):
                 col = col.toarray()
             result[:, i] = np.asarray(col).flatten()
         else:
-            # Must be in obs (we checked above)
             result[:, i] = adata.obs[feat].to_numpy(dtype=float)
 
     return result

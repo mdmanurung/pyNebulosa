@@ -112,7 +112,7 @@ class TestCalculateDensity:
     def test_wkde_raw_returns_dict(self, adata_simple):
         coords = adata_simple.obsm["X_umap"]
         w = np.asarray(adata_simple.X.toarray()[:, 0]).flatten()
-        result = calculate_density(w, coords, method="wkde", map=False)
+        result = calculate_density(w, coords, method="wkde", map_to_cells=False)
         assert isinstance(result, dict)
         assert "x" in result and "y" in result and "z" in result
 

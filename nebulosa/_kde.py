@@ -8,6 +8,7 @@ gene expression visualization.
 from __future__ import annotations
 
 import warnings
+from typing import Literal
 
 import numpy as np
 from scipy.stats import gaussian_kde, norm
@@ -141,32 +142,12 @@ def _get_dens(
     return z[ix, iy]
 
 
-def _get_dens_ks(
-    coords: np.ndarray,
-    kde_result: gaussian_kde,
-) -> np.ndarray:
-    """Map scipy gaussian_kde density estimates to individual data points.
-
-    Parameters
-    ----------
-    coords
-        Cell coordinates, shape ``(N, 2)``.
-    kde_result
-        Fitted ``scipy.stats.gaussian_kde`` object.
-
-    Returns
-    -------
-    1D array of density values, one per cell.
-    """
-    return kde_result(coords.T)
-
-
 def calculate_density(
     w: np.ndarray,
     coords: np.ndarray,
-    method: str = "wkde",
+    method: Literal["wkde", "ks"] = "wkde",
     adjust: float = 1.0,
-    map: bool = True,
+    map_to_cells: bool = True,
 ) -> np.ndarray | dict:
     """Estimate weighted kernel density.
 
@@ -183,14 +164,14 @@ def calculate_density(
         (scipy's ``gaussian_kde`` with weights).
     adjust
         Bandwidth adjustment factor (only for ``"wkde"``).
-    map
+    map_to_cells
         If ``True``, return per-cell density values. If ``False``,
         return the raw density estimation result.
 
     Returns
     -------
-    If *map* is ``True``, a 1D array of density values (length N).
-    If *map* is ``False``, a dict (for ``"wkde"``) or
+    If *map_to_cells* is ``True``, a 1D array of density values (length N).
+    If *map_to_cells* is ``False``, a dict (for ``"wkde"``) or
     ``gaussian_kde`` object (for ``"ks"``).
     """
     w = np.asarray(w, dtype=float)
@@ -206,7 +187,7 @@ def calculate_density(
             "All weights are zero; returning zero densities.",
             stacklevel=2,
         )
-        if map:
+        if map_to_cells:
             return np.zeros(len(w))
         return {"x": np.array([]), "y": np.array([]), "z": np.array([])}
 
@@ -220,7 +201,7 @@ def calculate_density(
             w=w_norm,
             adjust=adjust,
         )
-        if map:
+        if map_to_cells:
             return _get_dens(coords, dens["x"], dens["y"], dens["z"])
         return dens
 
@@ -229,6 +210,6 @@ def calculate_density(
             coords.T,
             weights=w_norm,
         )
-        if map:
-            return _get_dens_ks(coords, dens)
+        if map_to_cells:
+            return dens(coords.T)
         return dens
