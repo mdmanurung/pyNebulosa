@@ -20,4 +20,7 @@ docs/generated/
 data/
 vignettes/data/
 *.h5ad
+
+# Ignore PNGs except docs/images (README figures)
 *.png
+!docs/images/*.png
