@@ -13,21 +13,13 @@ unclear, especially when it is overlaid with clustering to annotate cell types.
 Nebulosa aims to recover the signal from dropped-out features by incorporating
 the similarity between cells allowing a "convolution" of the cell features.
 
-This repository contains both the original
-[R/Bioconductor package](https://bioconductor.org/packages/Nebulosa/) and a
-**Python port** designed for seamless integration with
-[scanpy](https://scanpy.readthedocs.io/) and the
-[scverse](https://scverse.org/) ecosystem.
-
-## Python package
-
-### Installation
+## Installation
 
 ```bash
 pip install nebulosa
 ```
 
-### Quick start
+## Quick start
 
 ```python
 import scanpy as sc
@@ -45,7 +37,7 @@ nb.plot_density(adata, ["MS4A1", "NKG7", "CST3"])
 nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 ```
 
-### How it differs from similar tools
+## How it differs from similar tools
 
 | Tool | What it does |
 |------|-------------|
@@ -53,7 +45,7 @@ nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 | pyUCell | Rank-based gene signature scoring with KNN smoothing |
 | **Nebulosa** | Gene-weighted KDE visualization on embeddings |
 
-### API
+## API
 
 | Function | Purpose |
 |----------|---------|
@@ -62,22 +54,6 @@ nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 | `nb.wkde2d(x, y, w)` | Low-level weighted 2D KDE |
 
 See the [tutorial notebook](vignettes/nebulosa_tutorial.ipynb) for a full walkthrough.
-
-## R package
-
-### Installation
-
-```R
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-BiocManager::install("Nebulosa")
-```
-
-See the R vignettes:
-
-- [Seurat](https://bioconductor.org/packages/devel/bioc/vignettes/Nebulosa/inst/doc/nebulosa_seurat.html)
-- [OSCA-Bioconductor](https://bioconductor.org/packages/devel/bioc/vignettes/Nebulosa/inst/doc/introduction.html)
 
 ## Citation
 
