@@ -65,7 +65,8 @@ def _density_scatter(
     c = density[order]
 
     sc = ax.scatter(
-        x, y,
+        x,
+        y,
         c=c,
         cmap=cmap,
         s=size,
@@ -198,8 +199,14 @@ def plot_density(
     # Single feature with provided axes
     if n_panels == 1 and ax is not None:
         _density_scatter(
-            ax, embeddings, panel_densities[0],
-            panel_labels[0], dim_names, size, cmap, colorbar_labels[0],
+            ax,
+            embeddings,
+            panel_densities[0],
+            panel_labels[0],
+            dim_names,
+            size,
+            cmap,
+            colorbar_labels[0],
         )
         return _finalize(ax.figure, show, save, return_axes=ax)
 
@@ -214,8 +221,14 @@ def plot_density(
     for i in range(n_panels):
         row, col = divmod(i, actual_ncols)
         _density_scatter(
-            axes[row, col], embeddings, panel_densities[i],
-            panel_labels[i], dim_names, size, cmap, colorbar_labels[i],
+            axes[row, col],
+            embeddings,
+            panel_densities[i],
+            panel_labels[i],
+            dim_names,
+            size,
+            cmap,
+            colorbar_labels[i],
         )
 
     # Hide unused axes

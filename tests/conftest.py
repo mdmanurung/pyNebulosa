@@ -1,8 +1,8 @@
 """Shared test fixtures for Nebulosa tests."""
 
+import anndata
 import numpy as np
 import pytest
-import anndata
 import scipy.sparse as sp
 
 

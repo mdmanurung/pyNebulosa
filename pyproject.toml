@@ -6,10 +6,35 @@ build-backend = "hatchling.build"
 name = "nebulosa"
 version = "0.1.0"
 description = "Single-cell data visualization using kernel gene-weighted density estimation"
+readme = "README.md"
 requires-python = ">=3.9"
 license = "GPL-3.0-or-later"
 authors = [
     {name = "Jose Alquicira-Hernandez"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Typing :: Typed",
+]
+keywords = [
+    "single-cell",
+    "RNA-seq",
+    "visualization",
+    "kernel-density-estimation",
+    "bioinformatics",
+    "scanpy",
+    "scverse",
 ]
 dependencies = [
     "numpy>=1.22",
@@ -18,16 +43,69 @@ dependencies = [
     "anndata>=0.8",
 ]
 
+[project.urls]
+Documentation = "https://github.com/powellgenomicslab/Nebulosa"
+Source = "https://github.com/powellgenomicslab/Nebulosa"
+Home-page = "https://github.com/powellgenomicslab/Nebulosa"
+
 [project.optional-dependencies]
 scanpy = ["scanpy>=1.9"]
-dev = [
+test = [
     "pytest>=7",
     "pytest-cov",
-    "scanpy>=1.9",
+]
+dev = [
+    "nebulosa[test,scanpy]",
+    "pre-commit",
+    "ruff",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["nebulosa"]
 
+# --- Testing -----------------------------------------------------------
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+xfail_strict = true
+addopts = [
+    "--import-mode=importlib",
+    "--strict-markers",
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+]
+
+[tool.coverage.run]
+source = ["nebulosa"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+]
+
+# --- Linting (ruff) ---------------------------------------------------
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "B",       # flake8-bugbear
+    "E",       # pycodestyle errors
+    "F",       # pyflakes
+    "I",       # isort
+    "UP",      # pyupgrade
+    "W",       # pycodestyle warnings
+    "RUF100",  # unused noqa
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["nebulosa"]
+
+[tool.ruff.format]
+docstring-code-format = true

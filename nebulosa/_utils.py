@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import numpy as np
 import scipy.sparse as sp
-
 from anndata import AnnData
 
 
@@ -25,9 +24,7 @@ def _validate_dims(dims: tuple[int, int]) -> None:
         If *dims* does not have exactly 2 elements.
     """
     if len(dims) != 2:
-        raise ValueError(
-            f"Exactly 2 dimensions are required, got {len(dims)}"
-        )
+        raise ValueError(f"Exactly 2 dimensions are required, got {len(dims)}")
 
 
 def _get_embeddings(
@@ -73,20 +70,14 @@ def _get_embeddings(
             reduction = obsm_keys[-1]
 
     if reduction not in adata.obsm:
-        raise KeyError(
-            f"Reduction '{reduction}' not found in adata.obsm. "
-            f"Available: {obsm_keys}"
-        )
+        raise KeyError(f"Reduction '{reduction}' not found in adata.obsm. Available: {obsm_keys}")
 
     emb = np.asarray(adata.obsm[reduction])
 
     # Validate dimension indices
     for d in dims:
         if d < 0 or d >= emb.shape[1]:
-            raise ValueError(
-                f"Dimension {d} not present in '{reduction}' "
-                f"(has {emb.shape[1]} dimensions)"
-            )
+            raise ValueError(f"Dimension {d} not present in '{reduction}' (has {emb.shape[1]} dimensions)")
 
     cell_embeddings = emb[:, list(dims)]
 
@@ -135,20 +126,14 @@ def _get_feature_data(
         # Check if missing are in obs
         obs_missing = [f for f in missing if f not in adata.obs.columns]
         if obs_missing:
-            raise ValueError(
-                f"Feature(s) not found in var_names or obs: "
-                f"{', '.join(obs_missing)}"
-            )
+            raise ValueError(f"Feature(s) not found in var_names or obs: {', '.join(obs_missing)}")
 
     # Get expression matrix
     if layer is None:
         mat = adata.X
     else:
         if layer not in adata.layers:
-            raise ValueError(
-                f"Layer '{layer}' not found. "
-                f"Available: {list(adata.layers.keys())}"
-            )
+            raise ValueError(f"Layer '{layer}' not found. Available: {list(adata.layers.keys())}")
         mat = adata.layers[layer]
 
     # Extract columns for each feature
