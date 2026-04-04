@@ -1,6 +1,7 @@
 # Nebulosa
 
 [![PyPI](https://img.shields.io/pypi/v/nebulosa.svg)](https://pypi.org/project/nebulosa/)
+[![Documentation](https://readthedocs.org/projects/nebulosa/badge/?version=latest)](https://nebulosa.readthedocs.io)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Single-cell data visualization using kernel gene-weighted density estimation.
@@ -53,7 +54,7 @@ nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 | `nb.calculate_density(weights, coords)` | Compute density values programmatically |
 | `nb.wkde2d(x, y, w)` | Low-level weighted 2D KDE |
 
-See the [tutorial notebook](vignettes/nebulosa_tutorial.ipynb) for a full walkthrough.
+See the [documentation](https://nebulosa.readthedocs.io) and [tutorial notebook](vignettes/nebulosa_tutorial.ipynb) for a full walkthrough.
 
 ## Citation
 

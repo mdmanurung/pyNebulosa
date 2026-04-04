@@ -7,6 +7,10 @@ build/
 .pytest_cache/
 .coverage
 
+# Docs
+docs/_build/
+docs/generated/
+
 # IDE / OS
 .ds_store
 .vscode/
