@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: SET_AFTER_PYPI_UPLOAD
+  sha256: SET_AFTER_PYPI_UPLOAD  # Replace with the actual SHA256 hash from PyPI before submitting to conda-forge
 
 build:
   noarch: python
