@@ -1,35 +1,26 @@
-.Rproj
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-.renviron
-.rprofile
-.rproj
-.rproj.user
-.rhistory
-.rapp.history
-.o
-.sl
-.so
-.dylib
-.a
-.dll
-.def
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+
+# Docs
+docs/_build/
+docs/generated/
+
+# IDE / OS
 .ds_store
-.unsrturl.bst
-.log
-.aux,
-.backups
-.cproject
-.directory
-.dropbox
-.exrc
-.gdb.history
-.gitattributes
-.gitmodules
-.hgtags
-.project
-.seed
-.settings
-.tm_properties
+.vscode/
+.idea/
+
+# Data cache
+data/
+vignettes/data/
+*.h5ad
+
+# Ignore PNGs except docs/images (README figures)
+*.png
+!docs/images/*.png
