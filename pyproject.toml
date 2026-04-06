@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "nebulosa"
+name = "pynebulosa"
 version = "0.1.0"
 description = "Single-cell data visualization using kernel gene-weighted density estimation"
 readme = "README.md"
@@ -44,9 +44,9 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://nebulosa.readthedocs.io"
-Source = "https://github.com/powellgenomicslab/Nebulosa"
-Home-page = "https://github.com/powellgenomicslab/Nebulosa"
+Documentation = "https://pynebulosa.readthedocs.io"
+Source = "https://github.com/mdmanurung/pyNebulosa"
+Home-page = "https://github.com/mdmanurung/pyNebulosa"
 
 [project.optional-dependencies]
 scanpy = ["scanpy>=1.9"]
@@ -62,13 +62,13 @@ test = [
     "pytest-cov",
 ]
 dev = [
-    "nebulosa[test,doc,scanpy]",
+    "pynebulosa[test,doc,scanpy]",
     "pre-commit",
     "ruff",
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["nebulosa"]
+packages = ["pynebulosa"]
 
 # --- Testing -----------------------------------------------------------
 
@@ -85,7 +85,7 @@ filterwarnings = [
 ]
 
 [tool.coverage.run]
-source = ["nebulosa"]
+source = ["pynebulosa"]
 omit = ["tests/*"]
 
 [tool.coverage.report]
@@ -112,7 +112,7 @@ select = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["nebulosa"]
+known-first-party = ["pynebulosa"]
 
 [tool.ruff.format]
 docstring-code-format = true

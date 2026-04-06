@@ -1,12 +1,12 @@
-"""Tests for nebulosa._plotting — plot_density and helpers."""
+"""Tests for pynebulosa._plotting — plot_density and helpers."""
 
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 
-from nebulosa import plot_density
-from nebulosa._plotting import _density_scatter, _finalize
+from pynebulosa import plot_density
+from pynebulosa._plotting import _density_scatter, _finalize
 
 # Use non-interactive backend for tests
 matplotlib.use("Agg")

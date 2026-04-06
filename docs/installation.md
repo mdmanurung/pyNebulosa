@@ -3,20 +3,20 @@
 ## From PyPI
 
 ```bash
-pip install nebulosa
+pip install pynebulosa
 ```
 
 ## With scanpy (recommended)
 
 ```bash
-pip install "nebulosa[scanpy]"
+pip install "pynebulosa[scanpy]"
 ```
 
 ## Development install
 
 ```bash
-git clone https://github.com/powellgenomicslab/Nebulosa.git
-cd Nebulosa
+git clone https://github.com/mdmanurung/pyNebulosa.git
+cd pyNebulosa
 pip install -e ".[dev]"
 ```
 

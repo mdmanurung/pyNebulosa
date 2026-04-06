@@ -1,11 +1,11 @@
-# Nebulosa
+# pyNebulosa
 
 **Single-cell data visualization using kernel gene-weighted density estimation.**
 
 Due to the sparsity observed in single-cell data (e.g. RNA-seq, ATAC-seq), the
 visualization of cell features (e.g. gene, peak) is frequently affected and
 unclear, especially when overlaid with clustering to annotate cell types.
-Nebulosa recovers the signal from dropped-out features by incorporating the
+pyNebulosa recovers the signal from dropped-out features by incorporating the
 similarity between cells, allowing a "convolution" of the cell features via
 weighted kernel density estimation.
 
@@ -13,7 +13,7 @@ weighted kernel density estimation.
 
 ```python
 import scanpy as sc
-import nebulosa as nb
+import pynebulosa as nb
 
 adata = sc.datasets.pbmc3k_processed()
 
@@ -39,7 +39,7 @@ comparison
 
 ## Citation
 
-If you use Nebulosa, please cite:
+If you use pyNebulosa, please cite:
 
 > Alquicira-Hernandez, J., Powell, J.E. Nebulosa recovers single-cell gene
 > expression signals by kernel density estimation.

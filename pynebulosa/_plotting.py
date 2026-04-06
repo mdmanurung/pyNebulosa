@@ -12,8 +12,8 @@ from typing import TYPE_CHECKING
 import matplotlib.pyplot as plt
 import numpy as np
 
-from nebulosa._kde import calculate_density
-from nebulosa._utils import _get_embeddings, _get_feature_data
+from pynebulosa._kde import calculate_density
+from pynebulosa._utils import _get_embeddings, _get_feature_data
 
 if TYPE_CHECKING:
     import matplotlib.axes
@@ -162,7 +162,7 @@ def plot_density(
     Examples
     --------
     >>> import scanpy as sc
-    >>> import nebulosa as nb
+    >>> import pynebulosa as nb
     >>> adata = sc.datasets.pbmc3k_processed()
     >>> nb.plot_density(adata, "CD4")
     >>> nb.plot_density(adata, ["CD8A", "CCR7"], joint=True)

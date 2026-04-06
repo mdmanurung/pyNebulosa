@@ -1,10 +1,10 @@
-"""Tests for nebulosa._kde — core KDE algorithms."""
+"""Tests for pynebulosa._kde — core KDE algorithms."""
 
 import numpy as np
 import pytest
 from scipy.stats import gaussian_kde
 
-from nebulosa._kde import _bandwidth, _get_dens, calculate_density, wkde2d
+from pynebulosa._kde import _bandwidth, _get_dens, calculate_density, wkde2d
 
 
 class TestBandwidth:
