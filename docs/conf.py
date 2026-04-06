@@ -50,13 +50,12 @@ intersphinx_mapping = {
 nb_execution_mode = "off"  # Don't re-execute notebooks during build
 
 # HTML output
-html_theme = "sphinx_book_theme"
+html_theme = "furo"
 html_title = "pyNebulosa"
 html_theme_options = {
-    "repository_url": "https://github.com/mdmanurung/pyNebulosa",
-    "use_repository_button": True,
-    "use_issues_button": True,
-    "path_to_docs": "docs",
+    "source_repository": "https://github.com/mdmanurung/pyNebulosa",
+    "source_branch": "main",
+    "source_directory": "docs/",
 }
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
