@@ -1,6 +1,6 @@
-"""Sphinx configuration for Nebulosa documentation."""
+"""Sphinx configuration for pyNebulosa documentation."""
 
-project = "Nebulosa"
+project = "pyNebulosa"
 copyright = "2024, Jose Alquicira-Hernandez"
 author = "Jose Alquicira-Hernandez"
 
@@ -51,9 +51,9 @@ nb_execution_mode = "off"  # Don't re-execute notebooks during build
 
 # HTML output
 html_theme = "sphinx_book_theme"
-html_title = "Nebulosa"
+html_title = "pyNebulosa"
 html_theme_options = {
-    "repository_url": "https://github.com/powellgenomicslab/Nebulosa",
+    "repository_url": "https://github.com/mdmanurung/pyNebulosa",
     "use_repository_button": True,
     "use_issues_button": True,
     "path_to_docs": "docs",

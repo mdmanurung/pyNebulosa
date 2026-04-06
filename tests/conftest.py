@@ -1,4 +1,4 @@
-"""Shared test fixtures for Nebulosa tests."""
+"""Shared test fixtures for pyNebulosa tests."""
 
 import anndata
 import numpy as np

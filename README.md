@@ -1,12 +1,12 @@
-# Nebulosa
+# pyNebulosa
 
-[![PyPI](https://img.shields.io/pypi/v/nebulosa.svg)](https://pypi.org/project/nebulosa/)
-[![Documentation](https://readthedocs.org/projects/nebulosa/badge/?version=latest)](https://nebulosa.readthedocs.io)
+[![PyPI](https://img.shields.io/pypi/v/pynebulosa.svg)](https://pypi.org/project/pynebulosa/)
+[![Documentation](https://readthedocs.org/projects/pynebulosa/badge/?version=latest)](https://pynebulosa.readthedocs.io)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 **Single-cell data visualization using kernel gene-weighted density estimation.**
 
-Nebulosa is a Python package (ported from the
+pyNebulosa is a Python package (ported from the
 [original R/Bioconductor package](https://bioconductor.org/packages/Nebulosa))
 that recovers gene expression signals lost to dropout in single-cell data by
 using weighted kernel density estimation on low-dimensional embeddings. It
@@ -17,11 +17,11 @@ integrates natively with [scanpy](https://scanpy.readthedocs.io) and
 
 Standard feature plots in single-cell analysis are plagued by sparsity — many
 cells show zero expression even for marker genes, making it hard to see
-biological signal. Nebulosa addresses this by computing a gene-weighted kernel
+biological signal. pyNebulosa addresses this by computing a gene-weighted kernel
 density estimate (KDE) on the embedding space, effectively smoothing expression
 over neighbouring cells.
 
-| Standard feature plot | Nebulosa density plot |
+| Standard feature plot | pyNebulosa density plot |
 |:-----:|:-----:|
 | Sparse, hard to interpret | Smooth, recovers signal |
 
@@ -29,7 +29,7 @@ over neighbouring cells.
 
 ## R vs Python
 
-Nebulosa was originally an R/Bioconductor package for Seurat and
+pyNebulosa was originally an R/Bioconductor package (Nebulosa) for Seurat and
 SingleCellExperiment objects. This Python port provides an equivalent API for
 the scanpy/AnnData ecosystem, producing identical density estimates.
 
@@ -54,7 +54,7 @@ plot_density(pbmc, c("NKG7", "GNLY"),
 
 ```python
 import scanpy as sc
-import nebulosa as nb
+import pynebulosa as nb
 adata = sc.datasets.pbmc3k_processed()
 nb.plot_density(adata, "NKG7")
 nb.plot_density(adata, ["NKG7", "GNLY"],
@@ -68,20 +68,20 @@ nb.plot_density(adata, ["NKG7", "GNLY"],
 ## Installation
 
 ```bash
-pip install nebulosa
+pip install pynebulosa
 ```
 
 With scanpy (recommended):
 
 ```bash
-pip install "nebulosa[scanpy]"
+pip install "pynebulosa[scanpy]"
 ```
 
 ## Quick start
 
 ```python
 import scanpy as sc
-import nebulosa as nb
+import pynebulosa as nb
 
 adata = sc.datasets.pbmc3k_processed()
 
@@ -135,16 +135,16 @@ nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 |------|----------|----------|
 | `scanpy.tl.embedding_density` | Unweighted KDE per category | Where are cells of group X? |
 | pyUCell | Rank-based scoring + KNN smoothing | Gene signature scoring |
-| **Nebulosa** | Gene-weighted KDE on embeddings | Recovering dropout signal |
+| **pyNebulosa** | Gene-weighted KDE on embeddings | Recovering dropout signal |
 
 ## Documentation
 
-- [Full documentation](https://nebulosa.readthedocs.io) (ReadTheDocs)
+- [Full documentation](https://pynebulosa.readthedocs.io) (ReadTheDocs)
 - [Tutorial notebook](vignettes/nebulosa_tutorial.ipynb) (PBMC 3K walkthrough)
 
 ## Citation
 
-If you use Nebulosa, please cite:
+If you use pyNebulosa, please cite:
 
 > Alquicira-Hernandez, J., Powell, J.E. Nebulosa recovers single-cell gene
 > expression signals by kernel density estimation.

@@ -5,7 +5,7 @@
 ### plot_density
 
 ```{eval-rst}
-.. autofunction:: nebulosa.plot_density
+.. autofunction:: pynebulosa.plot_density
 ```
 
 ## Density estimation
@@ -13,11 +13,11 @@
 ### calculate_density
 
 ```{eval-rst}
-.. autofunction:: nebulosa.calculate_density
+.. autofunction:: pynebulosa.calculate_density
 ```
 
 ### wkde2d
 
 ```{eval-rst}
-.. autofunction:: nebulosa.wkde2d
+.. autofunction:: pynebulosa.wkde2d
 ```

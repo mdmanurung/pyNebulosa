@@ -1,10 +1,10 @@
-"""Tests for nebulosa._utils — validation and data extraction helpers."""
+"""Tests for pynebulosa._utils — validation and data extraction helpers."""
 
 import anndata
 import numpy as np
 import pytest
 
-from nebulosa._utils import _get_embeddings, _get_feature_data, _validate_dims
+from pynebulosa._utils import _get_embeddings, _get_feature_data, _validate_dims
 
 
 class TestValidateDims:
