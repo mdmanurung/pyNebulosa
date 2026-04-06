@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/pynebulosa.svg)](https://pypi.org/project/pynebulosa/)
 [![Documentation](https://readthedocs.org/projects/pynebulosa/badge/?version=latest)](https://pynebulosa.readthedocs.io)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Single-cell data visualization using kernel gene-weighted density estimation.**
 
@@ -141,6 +141,23 @@ nb.plot_density(adata, ["NKG7", "GNLY"], joint=True)
 
 - [Full documentation](https://pynebulosa.readthedocs.io) (ReadTheDocs)
 - [Tutorial notebook](vignettes/nebulosa_tutorial.ipynb) (PBMC 3K walkthrough)
+
+## Contributing
+
+We welcome contributions of all kinds! If you'd like to contribute to
+pyNebulosa, please:
+
+1. Fork the repository and create a feature branch.
+2. Make your changes and add tests where appropriate.
+3. Ensure all tests pass with `pytest tests/ -v`.
+4. Submit a pull request describing your changes.
+
+Please report bugs and feature requests on the
+[issue tracker](https://github.com/mdmanurung/pyNebulosa/issues).
+
+## License
+
+pyNebulosa is licensed under the [MIT License](LICENSE).
 
 ## Citation
 

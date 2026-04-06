@@ -1,0 +1,53 @@
+{% set name = "pynebulosa" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: SET_AFTER_PYPI_UPLOAD
+
+build:
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python >=3.9
+    - pip
+    - hatchling
+  run:
+    - python >=3.9
+    - numpy >=1.22
+    - scipy >=1.9
+    - matplotlib-base >=3.5
+    - anndata >=0.8
+
+test:
+  imports:
+    - pynebulosa
+  requires:
+    - pip
+  commands:
+    - pip check
+
+about:
+  home: https://github.com/mdmanurung/pyNebulosa
+  summary: Single-cell data visualization using kernel gene-weighted density estimation
+  description: |
+    pyNebulosa is a Python package that recovers gene expression signals
+    lost to dropout in single-cell data by using weighted kernel density
+    estimation on low-dimensional embeddings. It integrates natively with
+    scanpy and AnnData.
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  doc_url: https://pynebulosa.readthedocs.io
+  dev_url: https://github.com/mdmanurung/pyNebulosa
+
+extra:
+  recipe-maintainers:
+    - mdmanurung
