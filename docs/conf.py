@@ -1,8 +1,8 @@
 """Sphinx configuration for pyNebulosa documentation."""
 
 project = "pyNebulosa"
-copyright = "2024, Jose Alquicira-Hernandez"
-author = "Jose Alquicira-Hernandez"
+copyright = "2026, Mikhael Manurung"
+author = "Mikhael Manurung"
 
 extensions = [
     "sphinx.ext.autodoc",
