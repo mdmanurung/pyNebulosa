@@ -8,4 +8,4 @@ from pynebulosa._kde import calculate_density, wkde2d
 from pynebulosa._plotting import plot_density
 
 __all__ = ["plot_density", "calculate_density", "wkde2d"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"

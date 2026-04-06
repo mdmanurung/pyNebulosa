@@ -1,5 +1,5 @@
 {% set name = "pynebulosa" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,9 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 847745de9a7aa8edc505ee488506d753111937dc9f691541e688b6e4a39565c6
+  # TODO: After publishing v0.1.1 to PyPI, update this hash with:
+  #   curl -sL https://pypi.io/packages/source/p/pynebulosa/pynebulosa-0.1.1.tar.gz | sha256sum
+  sha256: PLACEHOLDER
 
 build:
   noarch: python
