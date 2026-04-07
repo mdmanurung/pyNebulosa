@@ -9,6 +9,7 @@ from __future__ import annotations
 import math
 from typing import TYPE_CHECKING
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -241,6 +242,11 @@ def plot_density(
     return _finalize(fig, show, save)
 
 
+def _is_inline_backend() -> bool:
+    """Check if matplotlib is using a Jupyter inline backend."""
+    return "inline" in matplotlib.get_backend()
+
+
 def _finalize(
     fig_or_ax,
     show: bool | None,
@@ -259,5 +265,13 @@ def _finalize(
 
     if show is False:
         plt.close(fig)
+        return return_axes if return_axes is not None else fig
+
+    # show is None — auto-detect: in Jupyter inline backend, show and
+    # return None to prevent the figure from being displayed twice
+    # (once by the backend and once by Jupyter's repr of the return value).
+    if _is_inline_backend():
+        plt.show()
+        return None
 
     return return_axes if return_axes is not None else fig
