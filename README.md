@@ -167,3 +167,7 @@ If you use pyNebulosa, please cite:
 > expression signals by kernel density estimation.
 > *Bioinformatics*, 37(16), 2485-2487, 2021.
 > [doi:10.1093/bioinformatics/btab003](https://doi.org/10.1093/bioinformatics/btab003)
+
+## R grid parity
+
+The weighted grid scale and cell mapping are tested against R Nebulosa at the commit recorded in tests/fixtures/r_grid/PROVENANCE.txt. Reproduction: clone that R source, change to the fixture directory, and run Rscript reference.R /path/to/Nebulosa. The Python test supplies the exported R ks::hpi bandwidth to isolate grid and indexing semantics. Default Python bandwidth remains a Silverman approximation; the ks branch uses scipy gaussian_kde and is not claimed to reproduce R ks::kde.

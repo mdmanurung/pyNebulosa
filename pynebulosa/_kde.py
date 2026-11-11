@@ -102,7 +102,8 @@ def wkde2d(
     wy = norm.pdf(ay) * w[None, :]
 
     # Density matrix: (n, n)
-    w_total = w.sum() * h[0] * h[1]
+    # R repeats w across all n grid rows before taking sum(w).
+    w_total = n * w.sum() * h[0] * h[1]
     if w_total == 0:
         z = np.zeros((n, n))
     else:
@@ -137,8 +138,8 @@ def _get_dens(
     -------
     1D array of density values, one per cell.
     """
-    ix = np.searchsorted(grid_x, coords[:, 0]).clip(0, len(grid_x) - 1)
-    iy = np.searchsorted(grid_y, coords[:, 1]).clip(0, len(grid_y) - 1)
+    ix = (np.searchsorted(grid_x, coords[:, 0], side="right") - 1).clip(0, len(grid_x) - 1)
+    iy = (np.searchsorted(grid_y, coords[:, 1], side="right") - 1).clip(0, len(grid_y) - 1)
     return z[ix, iy]
 
 
