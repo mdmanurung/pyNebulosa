@@ -1,0 +1,1 @@
+R Nebulosa source commit aa4b6ff06fe987ca07ddfbf866ed25541f1e8d27; R ks::hpi bandwidth exported for fixed-bandwidth comparison. See reference.R. Default Python bandwidth is approximate and is not covered by this parity claim.
