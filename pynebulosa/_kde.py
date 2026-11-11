@@ -149,6 +149,7 @@ def calculate_density(
     method: Literal["wkde", "ks"] = "wkde",
     adjust: float = 1.0,
     map_to_cells: bool = True,
+    bandwidth: tuple[float, float] | None = None,
 ) -> np.ndarray | dict:
     """Estimate weighted kernel density.
 
@@ -168,6 +169,9 @@ def calculate_density(
     map_to_cells
         If ``True``, return per-cell density values. If ``False``,
         return the raw density estimation result.
+    bandwidth
+        Optional explicit x/y bandwidths for wkde, for example values exported
+        from R ks::hpi when checking R parity. The default is approximate.
 
     Returns
     -------
@@ -180,6 +184,12 @@ def calculate_density(
 
     if method not in ("wkde", "ks"):
         raise ValueError(f"Unknown method '{method}'. Use 'wkde' or 'ks'.")
+    if bandwidth is not None:
+        if method != "wkde":
+            raise ValueError("Explicit bandwidth is only supported for wkde.")
+        h = np.asarray(bandwidth, dtype=float)
+        if h.shape != (2,) or not np.isfinite(h).all() or np.any(h <= 0):
+            raise ValueError("bandwidth must contain two finite positive values.")
 
     # Clip negative weights to zero (handles z-scored/scaled data where
     # expression values can be negative — below-average cells should not
@@ -205,6 +215,7 @@ def calculate_density(
             x=coords[:, 0],
             y=coords[:, 1],
             w=w_norm,
+            h=bandwidth,
             adjust=adjust,
         )
         if map_to_cells:
